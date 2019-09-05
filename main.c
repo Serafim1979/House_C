@@ -11,8 +11,15 @@ int main()
     printf("\n\nIn the house %d floors, %d entrances, ", level, entrance);
     printf("on each floor %d apartment.\n", apartment);
 
-    printf("Enter the number of the apartment you are interested in: \n");
-    scanf("%d", &p_apartment);
+    do
+    {
+        printf("Enter the number of the apartment you are interested in: \n");
+        fflush(stdin);
+    }
+    while(scanf("%d", &p_apartment) != 1 && printf("You must enter a number.\n")
+          || p_apartment <= 0 && printf("You must enter a positive number.\n")
+          || p_apartment > level * entrance && printf("You must enter a number <= %d \n", level * entrance)
+          );
 
     m_entrance = (p_apartment - 1) / level + 1;
 
